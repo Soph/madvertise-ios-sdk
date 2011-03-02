@@ -1,0 +1,10 @@
+.DS_Store
+sample/AnotherSDKTest/build/
+sample/AnotherSDKTest/AnotherSDKTest.xcodeproj/*.pbxuser
+sample/AnotherSDKTest/AnotherSDKTest.xcodeproj/*.mode*
+src/build/
+src/madvertise-ios-sdk.xcodeproj/*.pbxuser
+src/madvertise-ios-sdk.xcodeproj/*.mode*
+*~
+*#
+*.swp

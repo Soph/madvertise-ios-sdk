@@ -1,0 +1,138 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXFileReference section */
+		8E577052131E777B00FC40CD /* Ad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ad.h; path = "../../madvertise-ios-sdk/src/Ad.h"; sourceTree = SOURCE_ROOT; };
+		8E577053131E777B00FC40CD /* Ad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ad.m; path = "../../madvertise-ios-sdk/src/Ad.m"; sourceTree = SOURCE_ROOT; };
+		8E577054131E777B00FC40CD /* InAppLandingPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppLandingPageController.h; path = "../../madvertise-ios-sdk/src/InAppLandingPageController.h"; sourceTree = SOURCE_ROOT; };
+		8E577055131E777B00FC40CD /* InAppLandingPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppLandingPageController.m; path = "../../madvertise-ios-sdk/src/InAppLandingPageController.m"; sourceTree = SOURCE_ROOT; };
+		8E577056131E777B00FC40CD /* MadDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MadDebug.h; path = "../../madvertise-ios-sdk/src/MadDebug.h"; sourceTree = SOURCE_ROOT; };
+		8E577057131E777B00FC40CD /* MadDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MadDebug.m; path = "../../madvertise-ios-sdk/src/MadDebug.m"; sourceTree = SOURCE_ROOT; };
+		8E577058131E777B00FC40CD /* MadvertiseDelegationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MadvertiseDelegationProtocol.h; path = "../../madvertise-ios-sdk/src/MadvertiseDelegationProtocol.h"; sourceTree = SOURCE_ROOT; };
+		8E577059131E777B00FC40CD /* MadvertiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MadvertiseView.h; path = "../../madvertise-ios-sdk/src/MadvertiseView.h"; sourceTree = SOURCE_ROOT; };
+		8E57705A131E777B00FC40CD /* MadvertiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MadvertiseView.m; path = "../../madvertise-ios-sdk/src/MadvertiseView.m"; sourceTree = SOURCE_ROOT; };
+		8E57705B131E777B00FC40CD /* TextAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextAdView.h; path = "../../madvertise-ios-sdk/src/TextAdView.h"; sourceTree = SOURCE_ROOT; };
+		8E57705C131E777B00FC40CD /* TextAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextAdView.m; path = "../../madvertise-ios-sdk/src/TextAdView.m"; sourceTree = SOURCE_ROOT; };
+		AA747D9E0F9514B9006C5449 /* madvertise_ios_sdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = madvertise_ios_sdk_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* madvertise-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = "madvertise-ios-sdk";
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8E577052131E777B00FC40CD /* Ad.h */,
+				8E577053131E777B00FC40CD /* Ad.m */,
+				8E577054131E777B00FC40CD /* InAppLandingPageController.h */,
+				8E577055131E777B00FC40CD /* InAppLandingPageController.m */,
+				8E577056131E777B00FC40CD /* MadDebug.h */,
+				8E577057131E777B00FC40CD /* MadDebug.m */,
+				8E577058131E777B00FC40CD /* MadvertiseDelegationProtocol.h */,
+				8E577059131E777B00FC40CD /* MadvertiseView.h */,
+				8E57705A131E777B00FC40CD /* MadvertiseView.m */,
+				8E57705B131E777B00FC40CD /* TextAdView.h */,
+				8E57705C131E777B00FC40CD /* TextAdView.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* madvertise_ios_sdk_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "madvertise-ios-sdk" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* madvertise-ios-sdk */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.0;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "madvertise-ios-sdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
