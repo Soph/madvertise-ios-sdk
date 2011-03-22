@@ -18,7 +18,7 @@
 @implementation TestDelegate
 
 - (NSString *) appId {
-  return @"TestTokn";
+  return @"DgVIuDJB";
 }
 
 - (bool) debugEnabled {
