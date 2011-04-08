@@ -225,7 +225,7 @@ static char base64EncodingTable[64] = {
       else
         input[i] = 0;
     }
-    input[0] = (input[0] & 0xFC) >> 2;
+    output[0] = (input[0] & 0xFC) >> 2;
     output[1] = ((input[0] & 0x03) << 4) | ((input[1] & 0xF0) >> 4);
     output[2] = ((input[1] & 0x0F) << 2) | ((input[2] & 0xC0) >> 6);
     output[3] = input[2] & 0x3F;
