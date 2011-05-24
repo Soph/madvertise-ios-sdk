@@ -23,8 +23,9 @@
   return view;
 }
 
-- (id)initWithText:(NSString*) text {
-  if(self = [self initWithFrame: CGRectMake(0, 0, 320, 53)]) {
+
+- (id)initWithText:(NSString*) _text {
+  if((self = [self initWithFrame: CGRectMake(0, 0, 320, 53)])) {
     // text 
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 53)];
     label.textColor = [UIColor whiteColor];
@@ -32,7 +33,7 @@
     label.adjustsFontSizeToFitWidth = true;
     label.textAlignment = UITextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:30];
-    label.text = text;
+    label.text = _text;
     
     UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(235, 34, 100, 20)];
     label2.textColor = [UIColor whiteColor];

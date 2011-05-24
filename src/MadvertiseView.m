@@ -383,7 +383,7 @@ static char base64EncodingTable[64] = {
     [request setAllHTTPHeaderFields:headers];  
   [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
   [MadDebug localDebug:@"Sending request"];
-  NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+  [[NSURLConnection alloc] initWithRequest:request delegate:self];
   [MadDebug localDebug:@"Request send"];
   [lock unlock];
 }
@@ -481,7 +481,7 @@ static char base64EncodingTable[64] = {
           result = ip;
         }
         if(![interface isEqualToString:@"lo0"] && ![interface isEqualToString:@"en0"] && ![interface isEqualToString:@"fw0"] && ![interface isEqualToString:@"en1"] ) {
-          [MadDebug localDebug:(@"Interface: %@", interface)];
+          [MadDebug localDebug: [NSString stringWithFormat:@"Interface: %@", interface ]];
           result = ip;
         }
       }

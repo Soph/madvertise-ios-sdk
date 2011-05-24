@@ -23,4 +23,8 @@
 
 + (TextAdView*)withText:(NSString*)text;
 
+// used internally
+- (id)initWithText:(NSString*) _text;
+- (void)drawRect:(CGRect)rect;
+
 @end

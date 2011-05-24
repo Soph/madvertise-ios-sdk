@@ -24,7 +24,7 @@ typedef enum tagMadvertiseAdClass {
   MMAAd
 } MadvertiseAdClass;
 
-@interface MadvertiseView : UIView {
+@interface MadvertiseView : UIView<UIWebViewDelegate> {
   // the delegate which receives ad related events like: adLoaded or adLoadFailed
   id<MadvertiseDelegationProtocol> madDelegate;
   
@@ -73,5 +73,15 @@ typedef enum tagMadvertiseAdClass {
 
 // position the frame for the view
 -(void)place_at_x:(int)x_pos y:(int)y_pos;
+
+// only used internally
+
+- (MadvertiseView*)initWithDelegate:(id<MadvertiseDelegationProtocol>)delegate withClass:(MadvertiseAdClass)adClassValue secondsToRefresh:(int)secondsToRefresh;
+
+- (void)createAdReloadTimer;
+
+- (NSString*)getIP;
+
+- (void) displayView;
 
 @end
