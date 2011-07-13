@@ -29,7 +29,7 @@ Integrated interfaces for adwhirl compatibility.
 
 h3. Download Tracker
 
-Integrated Download Tracker to easily track CPA campaigns
+Integrated download tracker to see live download statistics.
 
 h3. Tablet creatives
 
@@ -51,15 +51,6 @@ h3. Ad Reload and Animation on reload
 * Rotation 50/50 fading
 * Animation can be disabled
 
-h2. License
-
-The iOS SDK uses 
-
-# TouchJSON, a library for parsing JSON data (https://github.com/TouchCode/TouchJSON), which is published under the MIT License (http://www.opensource.org/licenses/mit-license.php).
-# AdWhirl. (http://code.google.com/p/adwhirl/source/list?repo=sdk-iphone), which is published under the Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
-
-All other code is published under the Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
-
 h2. Preparations
 
 * Install Xcode
@@ -70,7 +61,7 @@ h2. Preparations
     
     git clone git@github.com:madvertise/madvertise-ios-sdk.git
 
-* Sign up at [madvertise](https://app.madvertise.de/register)
+* Sign up at "madvertise":https://app.madvertise.de/register
   * If you don't have already an account, please sign up.
   * Create an app and copy the token, it will identify the requests send to our ad-server.
   * The Sample SDK comes with its own token. You can use it during development and for testing.
@@ -90,3 +81,12 @@ madvertise is a mobile ad network, that enables developers to monetize their app
 But apps are different, developers are, and so are the requirements and wishes, that developers have in order to include advertising in their apps. Additionally, it feels kind of strange, to use foreign librarys in your own code, without being able to actually have a look at the sources.
 
 This is why madvertise decided to make all SDKs public as open source projects. We simply could not handle all the (we admit, pretty good) feature requests and suggestions that developers make. Well, we believe nobody can and that's why we want to share the code with the whole community and enhanced it together. You can adapt the library much more quicker to whatever fits best for you.
+
+h2. License
+
+The iOS SDK uses 
+
+# TouchJSON, a library for parsing JSON data (https://github.com/TouchCode/TouchJSON), which is published under the MIT License (http://www.opensource.org/licenses/mit-license.php).
+# AdWhirl. (http://code.google.com/p/adwhirl/source/list?repo=sdk-iphone), which is published under the Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+All other code is published under the Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
