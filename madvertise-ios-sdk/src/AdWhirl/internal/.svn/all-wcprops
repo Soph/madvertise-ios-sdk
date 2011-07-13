@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal
+END
+AdWhirlView.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlView.m
+END
+AdWhirlConfigStore.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlConfigStore.h
+END
+AdWhirlAdapterEvent.h
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdapterEvent.h
+END
+AdWhirlAdNetworkConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdNetworkConfig.h
+END
+AdWhirlWebBrowserController.h
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlWebBrowserController.h
+END
+AdWhirlConfigStore.m
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlConfigStore.m
+END
+AdWhirlAdNetworkRegistry.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdNetworkRegistry.h
+END
+AdWhirlAdapterEvent.m
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdapterEvent.m
+END
+AWNetworkReachabilityWrapper.h
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AWNetworkReachabilityWrapper.h
+END
+AdWhirlError.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlError.h
+END
+AdWhirlAdNetworkConfig.m
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdNetworkConfig.m
+END
+AdWhirlWebBrowserController.m
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlWebBrowserController.m
+END
+AdWhirlAdNetworkRegistry.m
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdNetworkRegistry.m
+END
+AWNetworkReachabilityWrapper.m
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AWNetworkReachabilityWrapper.m
+END
+AdWhirlAdNetworkAdapter+Helpers.h
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdNetworkAdapter+Helpers.h
+END
+AdWhirlError.m
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlError.m
+END
+AdWhirlAdNetworkAdapter+Helpers.m
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdNetworkAdapter+Helpers.m
+END
+AdWhirlAdNetworkAdapter.m
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdNetworkAdapter.m
+END
+AdWhirlConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlConfig.h
+END
+AdWhirlClassWrapper.h
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlClassWrapper.h
+END
+ARRollerView.m
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/ARRollerView.m
+END
+AdWhirlCustomAdView.h
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlCustomAdView.h
+END
+AdWhirlConfig.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlConfig.m
+END
+AdWhirlClassWrapper.m
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlClassWrapper.m
+END
+AdWhirlAdapterCustom.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdapterCustom.h
+END
+AdWhirlWebBrowser.xib
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlWebBrowser.xib
+END
+AdWhirlAdapterGeneric.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdapterGeneric.h
+END
+UIColor+AdWhirlConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/UIColor+AdWhirlConfig.h
+END
+AdWhirlCustomAdView.m
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlCustomAdView.m
+END
+AdWhirlAdapterCustom.m
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdapterCustom.m
+END
+AdWhirlLog.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlLog.h
+END
+AdWhirlAdapterGeneric.m
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlAdapterGeneric.m
+END
+AWNetworkReachabilityDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AWNetworkReachabilityDelegate.h
+END
+UIColor+AdWhirlConfig.m
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/UIColor+AdWhirlConfig.m
+END
+AdWhirlView+.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlView+.h
+END
+AdWhirlLog.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/REPOS/!svn/ver/3813/madvertise/trunk/madvertise-ios-sdk/src/AdWhirl/internal/AdWhirlLog.m
+END
