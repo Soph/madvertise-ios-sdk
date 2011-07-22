@@ -44,6 +44,7 @@
   //possible Formats
   //================
   // IABAd | MMAAd | leaderboard | full_screen | portrait | landscape | all
+
   
   MadvertiseView *madView = [MadvertiseView loadAdWithDelegate: _aDelegate withClass:MMAAd secondsToRefresh:15];
   [self.view addSubview:madView];
