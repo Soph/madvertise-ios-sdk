@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/REPOS/!svn/ver/4054/madvertise/trunk/MadvertiseSDKSample/Classes
+END
+TestDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/REPOS/!svn/ver/3874/madvertise/trunk/MadvertiseSDKSample/Classes/TestDelegate.h
+END
+TestDelegate.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/REPOS/!svn/ver/4054/madvertise/trunk/MadvertiseSDKSample/Classes/TestDelegate.m
+END
+AnotherSDKTestViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/REPOS/!svn/ver/4061/madvertise/trunk/MadvertiseSDKSample/Classes/AnotherSDKTestViewController.h
+END
+MadAdWhirlExampleDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/REPOS/!svn/ver/4061/madvertise/trunk/MadvertiseSDKSample/Classes/MadAdWhirlExampleDelegate.h
+END
+AnotherSDKTestViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/REPOS/!svn/ver/4064/madvertise/trunk/MadvertiseSDKSample/Classes/AnotherSDKTestViewController.m
+END
+MadAdWhirlExampleDelegate.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/REPOS/!svn/ver/4065/madvertise/trunk/MadvertiseSDKSample/Classes/MadAdWhirlExampleDelegate.m
+END
