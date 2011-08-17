@@ -153,7 +153,7 @@ NSString * const MadvertiseAdClass_toString[] = {
   y = y_pos;
   
   if(currentAdClass == medium_rectangle) {
-    self.frame = CGRectMake(x_pos, y_pos, 320, 267);
+    self.frame = CGRectMake(x_pos, y_pos, 300, 250);
   } else if(currentAdClass == mma) {
     self.frame = CGRectMake(x_pos, y_pos, 320, 53);
   } else if(currentAdClass == leaderboard){
@@ -271,8 +271,8 @@ NSString * const MadvertiseAdClass_toString[] = {
     
     // banner formats
     if(currentAdClass == medium_rectangle) {
-      currentAd.width   = 320;
-      currentAd.height  = 267;
+      currentAd.width   = 300;
+      currentAd.height  = 250;
     } else if(currentAdClass == mma) {
       currentAd.width   = 320;
       currentAd.height  = 53; 
