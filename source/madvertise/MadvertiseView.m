@@ -129,7 +129,7 @@ NSString * const MadvertiseAdClass_toString[] = {
       [MadvertiseTracker enable];
     }
   }
-  return [[MadvertiseView alloc] initWithDelegate:delegate withClass:adClassValue secondsToRefresh:secondsToRefresh];
+  return [[[MadvertiseView alloc] initWithDelegate:delegate withClass:adClassValue secondsToRefresh:secondsToRefresh] autorelease];
 }
 
 + (void) adLoadedHandlerWithObserver:(id) observer AndSelector:(SEL) selector{
