@@ -12,21 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "TextAdView.h"
+#import "MadvertiseTextAdView.h"
 
 
-@interface TextAdView ()
+@interface MadvertiseTextAdView ()
 - (id)initWithText:(NSString*) _text;
 - (void)drawRect:(CGRect)rect;
 @end
 
-@implementation TextAdView
+@implementation MadvertiseTextAdView
 @synthesize text;
 
-+(TextAdView*)withText:(NSString*) text {
-  TextAdView* view;
++(MadvertiseTextAdView*)withText:(NSString*) text {
+  MadvertiseTextAdView* view;
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    view = [[TextAdView alloc] initWithText:text];
+    view = [[MadvertiseTextAdView alloc] initWithText:text];
   [pool release];
   return [view autorelease];
 }
@@ -52,6 +52,9 @@
     
     [self addSubview:label];
     [self addSubview:label2];
+    
+    [label release];
+    [label2 release]; 
 
   }
   return self;

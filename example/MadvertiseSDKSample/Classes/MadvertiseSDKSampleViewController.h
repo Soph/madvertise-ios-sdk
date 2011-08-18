@@ -23,6 +23,4 @@
   MadvertiseSDKSampleDelegate *madvertiseDemoDelegate;
 }
 
-- (void) initMadView;
-
 @end

@@ -8,43 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		5B4E248813F0323700F67F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0A658013EFEA7B0032A2DD /* Foundation.framework */; };
-		5B63957013F40F4E003D95AF /* Ad.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B63956C13F40F4E003D95AF /* Ad.h */; };
+		5B63957013F40F4E003D95AF /* MadvertiseAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B63956C13F40F4E003D95AF /* MadvertiseAd.h */; };
 		5B63957213F40F4E003D95AF /* MadvertiseTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B63956E13F40F4E003D95AF /* MadvertiseTracker.h */; };
 		5B63957613F40F58003D95AF /* MadvertiseUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B63957413F40F57003D95AF /* MadvertiseUtilities.h */; };
 		5B6395A813F411F4003D95AF /* MadvertiseView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B6395A413F411F4003D95AF /* MadvertiseView.h */; };
-		5B6395AA13F411F4003D95AF /* TextAdView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B6395A613F411F4003D95AF /* TextAdView.h */; };
-		5B6395AC13F41205003D95AF /* MadvertiseView.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B6395A413F411F4003D95AF /* MadvertiseView.h */; };
+		5B6395AA13F411F4003D95AF /* MadvertiseTextAdView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B6395A613F411F4003D95AF /* MadvertiseTextAdView.h */; };
 		5B6395AD13F41205003D95AF /* MadvertiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6395A513F411F4003D95AF /* MadvertiseView.m */; };
-		5B6395AE13F41205003D95AF /* TextAdView.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B6395A613F411F4003D95AF /* TextAdView.h */; };
-		5B6395AF13F41205003D95AF /* TextAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6395A713F411F4003D95AF /* TextAdView.m */; };
-		5B6395B013F41205003D95AF /* MadvertiseUtilities.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B63957413F40F57003D95AF /* MadvertiseUtilities.h */; };
+		5B6395AF13F41205003D95AF /* MadvertiseTextAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6395A713F411F4003D95AF /* MadvertiseTextAdView.m */; };
 		5B6395B113F41205003D95AF /* MadvertiseUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63957513F40F58003D95AF /* MadvertiseUtilities.m */; };
-		5B6395B213F41205003D95AF /* Ad.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B63956C13F40F4E003D95AF /* Ad.h */; };
-		5B6395B313F41205003D95AF /* Ad.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63956D13F40F4E003D95AF /* Ad.m */; };
-		5B6395B413F41205003D95AF /* MadvertiseTracker.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B63956E13F40F4E003D95AF /* MadvertiseTracker.h */; };
+		5B6395B313F41205003D95AF /* MadvertiseAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63956D13F40F4E003D95AF /* MadvertiseAd.m */; };
 		5B6395B513F41205003D95AF /* MadvertiseTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63956F13F40F4E003D95AF /* MadvertiseTracker.m */; };
-		5B6395B613F41205003D95AF /* InAppLandingPageController.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65C313F00B660032A2DD /* InAppLandingPageController.h */; };
 		5B6395B713F41205003D95AF /* InAppLandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65C413F00B660032A2DD /* InAppLandingPageController.m */; };
-		5B6395B813F41205003D95AF /* MadvertiseDelegationProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65C913F00B660032A2DD /* MadvertiseDelegationProtocol.h */; };
-		5B6395B913F41205003D95AF /* CDataScanner.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65D013F00B660032A2DD /* CDataScanner.h */; };
 		5B6395BA13F41205003D95AF /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65D113F00B660032A2DD /* CDataScanner.m */; };
-		5B6395BB13F41205003D95AF /* CDataScanner_Extensions.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65D313F00B660032A2DD /* CDataScanner_Extensions.h */; };
 		5B6395BC13F41205003D95AF /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65D413F00B660032A2DD /* CDataScanner_Extensions.m */; };
-		5B6395BD13F41205003D95AF /* NSCharacterSet_Extensions.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65D513F00B660032A2DD /* NSCharacterSet_Extensions.h */; };
 		5B6395BE13F41205003D95AF /* NSCharacterSet_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65D613F00B660032A2DD /* NSCharacterSet_Extensions.m */; };
-		5B6395BF13F41205003D95AF /* NSDictionary_JSONExtensions.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65D713F00B660032A2DD /* NSDictionary_JSONExtensions.h */; };
 		5B6395C013F41205003D95AF /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65D813F00B660032A2DD /* NSDictionary_JSONExtensions.m */; };
-		5B6395C113F41205003D95AF /* NSScanner_Extensions.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65D913F00B660032A2DD /* NSScanner_Extensions.h */; };
 		5B6395C213F41205003D95AF /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65DA13F00B660032A2DD /* NSScanner_Extensions.m */; };
-		5B6395C313F41205003D95AF /* CJSONDataSerializer.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65DC13F00B660032A2DD /* CJSONDataSerializer.h */; };
 		5B6395C413F41205003D95AF /* CJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65DD13F00B660032A2DD /* CJSONDataSerializer.m */; };
-		5B6395C513F41205003D95AF /* CJSONDeserializer.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65DE13F00B660032A2DD /* CJSONDeserializer.h */; };
 		5B6395C613F41205003D95AF /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65DF13F00B660032A2DD /* CJSONDeserializer.m */; };
-		5B6395C713F41205003D95AF /* CJSONScanner.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65E013F00B660032A2DD /* CJSONScanner.h */; };
 		5B6395C813F41205003D95AF /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65E113F00B660032A2DD /* CJSONScanner.m */; };
-		5B6395C913F41205003D95AF /* CJSONSerializer.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65E213F00B660032A2DD /* CJSONSerializer.h */; };
 		5B6395CA13F41205003D95AF /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65E313F00B660032A2DD /* CJSONSerializer.m */; };
-		5B6395CB13F41205003D95AF /* CSerializedJSONData.h in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65E413F00B660032A2DD /* CSerializedJSONData.h */; };
 		5B6395CC13F41205003D95AF /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A65E513F00B660032A2DD /* CSerializedJSONData.m */; };
 /* End PBXBuildFile section */
 
@@ -74,16 +57,16 @@
 		5B0A65E413F00B660032A2DD /* CSerializedJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSerializedJSONData.h; sourceTree = "<group>"; };
 		5B0A65E513F00B660032A2DD /* CSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSerializedJSONData.m; sourceTree = "<group>"; };
 		5B4E248713F0323700F67F5A /* libmadvertise-ios-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libmadvertise-ios-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B63956C13F40F4E003D95AF /* Ad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad.h; sourceTree = "<group>"; };
-		5B63956D13F40F4E003D95AF /* Ad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad.m; sourceTree = "<group>"; };
+		5B63956C13F40F4E003D95AF /* MadvertiseAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MadvertiseAd.h; sourceTree = "<group>"; };
+		5B63956D13F40F4E003D95AF /* MadvertiseAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MadvertiseAd.m; sourceTree = "<group>"; };
 		5B63956E13F40F4E003D95AF /* MadvertiseTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MadvertiseTracker.h; sourceTree = "<group>"; };
 		5B63956F13F40F4E003D95AF /* MadvertiseTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MadvertiseTracker.m; sourceTree = "<group>"; };
 		5B63957413F40F57003D95AF /* MadvertiseUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MadvertiseUtilities.h; sourceTree = "<group>"; };
 		5B63957513F40F58003D95AF /* MadvertiseUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MadvertiseUtilities.m; sourceTree = "<group>"; };
 		5B6395A413F411F4003D95AF /* MadvertiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MadvertiseView.h; sourceTree = "<group>"; };
 		5B6395A513F411F4003D95AF /* MadvertiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MadvertiseView.m; sourceTree = "<group>"; };
-		5B6395A613F411F4003D95AF /* TextAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAdView.h; sourceTree = "<group>"; };
-		5B6395A713F411F4003D95AF /* TextAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAdView.m; sourceTree = "<group>"; };
+		5B6395A613F411F4003D95AF /* MadvertiseTextAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MadvertiseTextAdView.h; sourceTree = "<group>"; };
+		5B6395A713F411F4003D95AF /* MadvertiseTextAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MadvertiseTextAdView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,12 +120,12 @@
 			children = (
 				5B6395A413F411F4003D95AF /* MadvertiseView.h */,
 				5B6395A513F411F4003D95AF /* MadvertiseView.m */,
-				5B6395A613F411F4003D95AF /* TextAdView.h */,
-				5B6395A713F411F4003D95AF /* TextAdView.m */,
+				5B6395A613F411F4003D95AF /* MadvertiseTextAdView.h */,
+				5B6395A713F411F4003D95AF /* MadvertiseTextAdView.m */,
 				5B63957413F40F57003D95AF /* MadvertiseUtilities.h */,
 				5B63957513F40F58003D95AF /* MadvertiseUtilities.m */,
-				5B63956C13F40F4E003D95AF /* Ad.h */,
-				5B63956D13F40F4E003D95AF /* Ad.m */,
+				5B63956C13F40F4E003D95AF /* MadvertiseAd.h */,
+				5B63956D13F40F4E003D95AF /* MadvertiseAd.m */,
 				5B63956E13F40F4E003D95AF /* MadvertiseTracker.h */,
 				5B63956F13F40F4E003D95AF /* MadvertiseTracker.m */,
 				5B0A65C313F00B660032A2DD /* InAppLandingPageController.h */,
@@ -202,11 +185,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B63957013F40F4E003D95AF /* Ad.h in Headers */,
+				5B63957013F40F4E003D95AF /* MadvertiseAd.h in Headers */,
 				5B63957213F40F4E003D95AF /* MadvertiseTracker.h in Headers */,
 				5B63957613F40F58003D95AF /* MadvertiseUtilities.h in Headers */,
 				5B6395A813F411F4003D95AF /* MadvertiseView.h in Headers */,
-				5B6395AA13F411F4003D95AF /* TextAdView.h in Headers */,
+				5B6395AA13F411F4003D95AF /* MadvertiseTextAdView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,38 +243,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B6395AC13F41205003D95AF /* MadvertiseView.h in Sources */,
 				5B6395AD13F41205003D95AF /* MadvertiseView.m in Sources */,
-				5B6395AE13F41205003D95AF /* TextAdView.h in Sources */,
-				5B6395AF13F41205003D95AF /* TextAdView.m in Sources */,
-				5B6395B013F41205003D95AF /* MadvertiseUtilities.h in Sources */,
+				5B6395AF13F41205003D95AF /* MadvertiseTextAdView.m in Sources */,
 				5B6395B113F41205003D95AF /* MadvertiseUtilities.m in Sources */,
-				5B6395B213F41205003D95AF /* Ad.h in Sources */,
-				5B6395B313F41205003D95AF /* Ad.m in Sources */,
-				5B6395B413F41205003D95AF /* MadvertiseTracker.h in Sources */,
+				5B6395B313F41205003D95AF /* MadvertiseAd.m in Sources */,
 				5B6395B513F41205003D95AF /* MadvertiseTracker.m in Sources */,
-				5B6395B613F41205003D95AF /* InAppLandingPageController.h in Sources */,
 				5B6395B713F41205003D95AF /* InAppLandingPageController.m in Sources */,
-				5B6395B813F41205003D95AF /* MadvertiseDelegationProtocol.h in Sources */,
-				5B6395B913F41205003D95AF /* CDataScanner.h in Sources */,
 				5B6395BA13F41205003D95AF /* CDataScanner.m in Sources */,
-				5B6395BB13F41205003D95AF /* CDataScanner_Extensions.h in Sources */,
 				5B6395BC13F41205003D95AF /* CDataScanner_Extensions.m in Sources */,
-				5B6395BD13F41205003D95AF /* NSCharacterSet_Extensions.h in Sources */,
 				5B6395BE13F41205003D95AF /* NSCharacterSet_Extensions.m in Sources */,
-				5B6395BF13F41205003D95AF /* NSDictionary_JSONExtensions.h in Sources */,
 				5B6395C013F41205003D95AF /* NSDictionary_JSONExtensions.m in Sources */,
-				5B6395C113F41205003D95AF /* NSScanner_Extensions.h in Sources */,
 				5B6395C213F41205003D95AF /* NSScanner_Extensions.m in Sources */,
-				5B6395C313F41205003D95AF /* CJSONDataSerializer.h in Sources */,
 				5B6395C413F41205003D95AF /* CJSONDataSerializer.m in Sources */,
-				5B6395C513F41205003D95AF /* CJSONDeserializer.h in Sources */,
 				5B6395C613F41205003D95AF /* CJSONDeserializer.m in Sources */,
-				5B6395C713F41205003D95AF /* CJSONScanner.h in Sources */,
 				5B6395C813F41205003D95AF /* CJSONScanner.m in Sources */,
-				5B6395C913F41205003D95AF /* CJSONSerializer.h in Sources */,
 				5B6395CA13F41205003D95AF /* CJSONSerializer.m in Sources */,
-				5B6395CB13F41205003D95AF /* CSerializedJSONData.h in Sources */,
 				5B6395CC13F41205003D95AF /* CSerializedJSONData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

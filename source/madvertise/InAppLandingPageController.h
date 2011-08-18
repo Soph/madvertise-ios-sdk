@@ -13,13 +13,13 @@
 // limitations under the License.
 
 #import <UIKit/UIKit.h>
-#import "Ad.h"
+#import "MadvertiseAd.h"
 //#import "MadvertiseView.h"
 
 @class MadvertiseView;
 
 @interface InAppLandingPageController : UIViewController <UIWebViewDelegate> {
-  Ad* ad;
+  MadvertiseAd* ad;
   MadvertiseView* madvertise_view;
   UIView *banner_view;
   SEL onClose;
@@ -29,7 +29,7 @@
   UIWebView* webview;
 }
 
-@property(nonatomic,retain) Ad* ad;
+@property(nonatomic,retain) MadvertiseAd* ad;
 @property(nonatomic,retain) MadvertiseView* madvertise_view;
 @property(nonatomic,retain) UIView* banner_view;
 @property SEL onClose;

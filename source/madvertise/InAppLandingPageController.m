@@ -75,7 +75,7 @@
   [button release];
   
   [toolbar release];
-  self.view = view1;
+  self.view = [view1 autorelease];
   
   overlay = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, rect.size.width, rect.size.height - 64.0)];
   overlay.alpha = 0.800;

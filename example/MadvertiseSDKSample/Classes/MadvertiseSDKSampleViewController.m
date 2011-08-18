@@ -31,32 +31,32 @@
   [super viewDidLoad];
 
   madvertiseDemoDelegate = [[MadvertiseSDKSampleDelegate alloc] init];
-  MadvertiseView *ad = [MadvertiseView loadAdWithDelegate:madvertiseDemoDelegate withClass:mma secondsToRefresh:15];
+  MadvertiseView *ad = [MadvertiseView loadAdWithDelegate:madvertiseDemoDelegate withClass:medium_rectangle secondsToRefresh:15];
   [ad place_at_x:0 y:60];
   [self.view addSubview:ad];
   [self.view bringSubviewToFront:ad];
   [ad release];
   
-//  MadvertiseView *ad2 = [MadvertiseView loadAdWithDelegate:madvertiseDemoDelegate withClass:leaderboard secondsToRefresh:25];
-//  [ad2 place_at_x:0 y:140];
-//  [self.view addSubview:ad2];
-//  [self.view bringSubviewToFront:ad2];
-//  [ad2 release];
-//  
-//  
-//  MadvertiseView *ad3 = [MadvertiseView loadAdWithDelegate:madvertiseDemoDelegate withClass:portrait secondsToRefresh:25];
-//  [ad3 place_at_x:0 y:320];
-//  [self.view addSubview:ad3];
-//  [self.view bringSubviewToFront:ad3];
-//  [ad3 release];
-//  
-//  
-//  ad3 = [MadvertiseView loadAdWithDelegate:madvertiseDemoDelegate withClass:fullscreen secondsToRefresh:25];
-//  [ad3 place_at_x:0 y:420];
-//  [self.view addSubview:ad3];
-//  [self.view bringSubviewToFront:ad3];
-//  [ad3 release];
-//  
+  MadvertiseView *ad2 = [MadvertiseView loadAdWithDelegate:madvertiseDemoDelegate withClass:leaderboard secondsToRefresh:25];
+  [ad2 place_at_x:0 y:140];
+  [self.view addSubview:ad2];
+  [self.view bringSubviewToFront:ad2];
+  [ad2 release];
+  
+  
+  MadvertiseView *ad3 = [MadvertiseView loadAdWithDelegate:madvertiseDemoDelegate withClass:portrait secondsToRefresh:25];
+  [ad3 place_at_x:0 y:320];
+  [self.view addSubview:ad3];
+  [self.view bringSubviewToFront:ad3];
+  [ad3 release];
+  
+  
+  ad3 = [MadvertiseView loadAdWithDelegate:madvertiseDemoDelegate withClass:fullscreen secondsToRefresh:25];
+  [ad3 place_at_x:0 y:420];
+  [self.view addSubview:ad3];
+  [self.view bringSubviewToFront:ad3];
+  [ad3 release];
+  
   
   
 }

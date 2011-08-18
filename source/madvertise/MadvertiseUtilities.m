@@ -78,44 +78,46 @@ static BOOL madvertiseDebugMode = YES;
 static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 
 + (NSString *) base64StringFromData: (NSData *) data {
-    NSMutableString *dest = [[NSMutableString alloc] initWithString:@""];
-    unsigned char * working = (unsigned char *)[data bytes];
-    int srcLen = [data length];
+  NSMutableString *dest = [NSMutableString stringWithString:@""]; 
+  unsigned char * working = (unsigned char *)[data bytes];
+  int srcLen = [data length];
     
-    // tackle the source in 3's as conveniently 4 Base64 nibbles fit into 3 bytes
-    for (int i=0; i<srcLen; i += 3)
+  // tackle the source in 3's as conveniently 4 Base64 nibbles fit into 3 bytes
+  for (int i=0; i<srcLen; i += 3)
+  {
+    // for each output nibble
+    for (int nib=0; nib<4; nib++)
     {
-      // for each output nibble
-      for (int nib=0; nib<4; nib++)
-      {
-        // nibble:nib from char:byt
-        int byt = (nib == 0)?0:nib-1;
-        int ix = (nib+1)*2;
+      // nibble:nib from char:byt
+      int byt = (nib == 0)?0:nib-1;
+      int ix = (nib+1)*2;
         
-        if (i+byt >= srcLen) break;
+      if (i+byt >= srcLen) break;
         
-        // extract the top bits of the nibble, if valid
-        unsigned char curr = ((working[i+byt] << (8-ix)) & 0x3F);
+      // extract the top bits of the nibble, if valid
+      unsigned char curr = ((working[i+byt] << (8-ix)) & 0x3F);
         
-        // extract the bottom bits of the nibble, if valid
-        if (i+nib < srcLen) curr |= ((working[i+nib] >> ix) & 0x3F);
+      // extract the bottom bits of the nibble, if valid
+      if (i+nib < srcLen) curr |= ((working[i+nib] >> ix) & 0x3F);
         
-        [dest appendFormat:@"%c", base64[curr]];
-      }
-      
+      [dest appendFormat:@"%c", base64[curr]];
     }
-    for(int i = 0; i < [dest length] - (([dest length] / 4) * 4); i++)
-      [dest appendString:@","];
-    return dest;
+      
+  }
+  for(int i = 0; i < [dest length] - (([dest length] / 4) * 4); i++)
+    [dest appendString:@","];
+  return dest;
 }
 
 + (NSString *) base64Hash:(NSString*) toHash {
-    const char *cKey  = [@"madvertise" cStringUsingEncoding:NSASCIIStringEncoding];
-    const char *cData = [toHash cStringUsingEncoding:NSASCIIStringEncoding];
-    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
-    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
-    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
-    return [MadvertiseUtilities base64StringFromData:HMAC ];
+  const char *cKey  = [@"madvertise" cStringUsingEncoding:NSASCIIStringEncoding];
+  const char *cData = [toHash cStringUsingEncoding:NSASCIIStringEncoding];
+  unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
+  CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+  NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
+  NSString* result = [MadvertiseUtilities base64StringFromData:HMAC];
+  [HMAC release];
+  return result;
     
 }
 
@@ -134,8 +136,6 @@ static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123
 + (NSString*) getAppVersion {
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
-
-
 
 
 @end

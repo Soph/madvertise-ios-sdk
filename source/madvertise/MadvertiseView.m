@@ -20,9 +20,9 @@
 #import "MadvertiseUtilities.h"
 
 
-#import "Ad.h"
+#import "MadvertiseAd.h"
 #import "InAppLandingPageController.h"
-#import "TextAdView.h"
+#import "MadvertiseTextAdView.h"
 #import "MadvertiseTracker.h"
 #import "MadvertiseView.h"
 #import "CJSONDeserializer.h"
@@ -45,7 +45,6 @@
 - (void) swapViewFormLeftToRight;
 - (void) swapViewWithFading;
 - (void) createAdReloadTimer;
-- (NSString*)getIP;
 - (void) displayView;
 - (void) stopTimer;
 - (void)loadAd;       // load a new ad into an existing MadvertiseView 
@@ -193,11 +192,11 @@ NSString * const MadvertiseAdClass_toString[] = {
   lock = [[NSLock alloc] init];
   [self loadAd];
   
-  self.placeHolder1 = [[UIWebView alloc] initWithFrame:CGRectZero];
+  self.placeHolder1 = [[[UIWebView alloc] initWithFrame:CGRectZero] autorelease];
   [placeholder_1 setUserInteractionEnabled:false];  
   placeholder_1.delegate = self;
   
-  self.placeHolder2 = [[UIWebView alloc] initWithFrame:CGRectZero];
+  self.placeHolder2 = [[[UIWebView alloc] initWithFrame:CGRectZero] autorelease];
   [placeholder_2 setUserInteractionEnabled:false];  
   placeholder_2.delegate = self;
   
@@ -267,7 +266,7 @@ NSString * const MadvertiseAdClass_toString[] = {
     if(currentAd)
       [currentAd release];
     
-    currentAd = [Ad initFromDictionary:dictionary];
+    currentAd = [MadvertiseAd initFromDictionary:dictionary];
     
     // banner formats
     if(currentAdClass == medium_rectangle) {
@@ -566,7 +565,7 @@ NSString * const MadvertiseAdClass_toString[] = {
     // text ad
     //--------
     [MadvertiseUtilities localDebug:@"Showing text ad"];
-    TextAdView* view = [TextAdView withText:currentAd.text];
+    MadvertiseTextAdView* view = [MadvertiseTextAdView withText:currentAd.text];
     if(!currentView){
       currentView = view;
     }

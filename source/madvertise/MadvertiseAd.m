@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "Ad.h"
+#import "MadvertiseAd.h"
 #import "MadvertiseUtilities.h"
 
 
-@implementation Ad
+@implementation MadvertiseAd
 
 @synthesize bannerUrl;
 @synthesize clickUrl;
@@ -27,9 +27,9 @@
 @synthesize height;
 @synthesize shouldOpenInAppBrowser;
 
-+(Ad*)initFromDictionary:(NSDictionary*)dictionary {
++(MadvertiseAd*)initFromDictionary:(NSDictionary*)dictionary {
   
-  Ad *ad = [Ad alloc];
+  MadvertiseAd *ad = [MadvertiseAd alloc];
   
   for (id key in dictionary) {
     [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"%@=%@", key, [dictionary valueForKey:key]]];

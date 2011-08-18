@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "Ad.h"
+#import "MadvertiseAd.h"
 #import "MadvertiseUtilities.h"
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
@@ -35,7 +35,7 @@ typedef enum tagMadvertiseAdClass {
   NSMutableURLRequest* request;  
   NSURLConnection *conn;                                  // current request object
   
-  Ad* currentAd;                                          // current ad
+  MadvertiseAd* currentAd;                                          // current ad
   MadvertiseAdClass currentAdClass;                       // ad type
   
   NSInteger responseCode;                                 // flag that indicates if http response from ad server is ok

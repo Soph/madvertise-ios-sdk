@@ -109,6 +109,8 @@ static NSString *madServer = @"http://ad.madvertise.de/action/";
 		if(++n != [post_params count]) 
 			body = [body stringByAppendingString:@"&"];
 	}
+  
+  [post_params release];
 	
   [request setHTTPMethod:@"POST"];  
 	[request setAllHTTPHeaderFields:headers]; 
@@ -123,6 +125,9 @@ static NSString *madServer = @"http://ad.madvertise.de/action/";
 	}
 	NSString* debugMessage = [[NSString alloc] initWithData:responseData encoding: NSUTF8StringEncoding];
   [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"Response from madvertise %@", debugMessage]];
+  [debugMessage release];
+  
+  [headers release];
 
 	[pool release];
 }

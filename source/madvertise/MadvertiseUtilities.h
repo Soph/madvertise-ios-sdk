@@ -25,7 +25,6 @@
 
 @interface MadvertiseUtilities : NSObject
 + (NSString *) getIP;
-+ (NSString *) base64StringFromData: (NSData *) data length: (int) length;
 + (NSString *) base64Hash:(NSString*) toHash;
 + (NSString *) buildUserAgent:(UIDevice*) device;
 + (NSString *) getTimestamp;
