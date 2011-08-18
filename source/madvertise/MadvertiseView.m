@@ -27,7 +27,7 @@
 #import "MadvertiseView.h"
 #import "CJSONDeserializer.h"
 
-#define MADVERTISE_SDK_VERION @"4.1"
+#define MADVERTISE_SDK_VERION @"4.1.2"
 
 
 
