@@ -12,18 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "MadvertiseAd.h"
-#import "MadvertiseUtilities.h"
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "InAppLandingPageController.h"
 #import "MadvertiseDelegationProtocol.h"
-
 
 // enum of available banner formats
 typedef enum tagMadvertiseAdClass {
   mma,medium_rectangle,leaderboard,fullscreen,portrait,landscape  
 } MadvertiseAdClass;
+
+@class InAppLandingPageController;
+@class MadvertiseAd;
 
 @interface MadvertiseView : UIView<UIWebViewDelegate> {
   

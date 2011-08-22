@@ -13,10 +13,9 @@
 // limitations under the License.
 
 #import <UIKit/UIKit.h>
-#import "MadvertiseAd.h"
-//#import "MadvertiseView.h"
 
 @class MadvertiseView;
+@class MadvertiseAd;
 
 @interface InAppLandingPageController : UIViewController <UIWebViewDelegate> {
   MadvertiseAd* ad;

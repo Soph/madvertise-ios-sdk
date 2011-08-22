@@ -24,8 +24,8 @@
 //  return @"EIt5zves";
 }
 
-- (bool) debugEnabled {
-  return true;
+- (BOOL) debugEnabled {
+  return YES;
 }
 
 - (double) durationOfBannerAnimation{
@@ -48,7 +48,7 @@
     return _location;
 }
 
-- (bool) downloadTrackerEnabled {
+- (BOOL) downloadTrackerEnabled {
   return YES;
 }
 

@@ -15,7 +15,8 @@
 #import "InAppLandingPageController.h"
 #import <UIKit/UIBarButtonItem.h>
 #import <QuartzCore/QuartzCore.h>
-
+#import "MadvertiseView.h"
+#import "MadvertiseAd.h"
 
 @implementation InAppLandingPageController
 
@@ -101,9 +102,9 @@
   [webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[ad clickUrl]]]];
 }
 
-bool gone = false; 
+bool gone = NO; 
 
--(void)back {
+-(void) back {
   [UIView beginAnimations:nil context:NULL];
   [UIView setAnimationDuration:1.0];
   UIWindow *window = [[UIApplication sharedApplication] keyWindow];  
@@ -112,18 +113,15 @@ bool gone = false;
   [UIView commitAnimations];
   [self.madvertise_view addSubview:self.banner_view];
   [self.madvertise_view performSelector:onClose];
-  gone = false;
-  [self release];
+  gone = NO;
 }
 
--(void)afterFadeOut:(NSString*)animationID finished:(NSNumber*)finished context:(void*)context  {
+-(void) afterFadeOut:(NSString*)animationID finished:(NSNumber*)finished context:(void*)context  {
   [banner_container removeFromSuperview];
   [spinner stopAnimating];
   [spinner removeFromSuperview];
   [overlay removeFromSuperview];
 }
-
-
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
   if(!gone) {
@@ -136,7 +134,7 @@ bool gone = false;
     [spinner setAlpha:0];
     [overlay setAlpha:0];
     [UIView commitAnimations];
-    gone = true;
+    gone = YES;
   }
 }
 
