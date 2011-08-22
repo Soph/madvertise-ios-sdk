@@ -69,18 +69,17 @@ static NSString *madServer = @"http://ad.madvertise.de/action/";
 }
 
 + (void) report: (NSString*) action_type {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	
- [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"%@",documentsDirectory]];
+  MADLog(@"%@", documentsDirectory);
 	
   NSString *appOpenPath = [documentsDirectory stringByAppendingPathComponent:@"mad_launch_tracking"];
 	NSFileManager *fileManager = [NSFileManager defaultManager];
     
   bool firstLaunch = ![fileManager fileExistsAtPath:appOpenPath];
 	
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"Sending tracking request to madvertise. token=%@",productToken]];
+  MADLog(@"Sending tracking request to madvertise. token=%@",productToken);
 	
 	UIDevice* device = [UIDevice currentDevice];
 	NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", madServer , productToken]];
@@ -123,13 +122,14 @@ static NSString *madServer = @"http://ad.madvertise.de/action/";
 	if( (!error) && ([(NSHTTPURLResponse *)response statusCode] == 200)) {
 		[fileManager createFileAtPath:appOpenPath contents:nil attributes:nil];
 	}
+
+#ifdef DEBUG
 	NSString* debugMessage = [[NSString alloc] initWithData:responseData encoding: NSUTF8StringEncoding];
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"Response from madvertise %@", debugMessage]];
+  MADLog(@"Response from madvertise %@", debugMessage);
   [debugMessage release];
+#endif 
   
   [headers release];
-
-	[pool release];
 }
 
 @end

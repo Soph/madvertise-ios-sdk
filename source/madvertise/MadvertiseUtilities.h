@@ -22,6 +22,11 @@
 #import <UIKit/UIKit.h>
 #import <UIKit/UIDevice.h>
 
+#if DEBUG
+#define MADLog(format, ...) [MadvertiseUtilities logWithPath:__FILE__ line:__LINE__ string:(format), ## __VA_ARGS__]
+#else
+#define MADLog(format, ...)
+#endif
 
 @interface MadvertiseUtilities : NSObject
 + (NSString *) getIP;
@@ -30,6 +35,6 @@
 + (NSString *) getTimestamp;
 + (NSString*) getAppName;
 + (NSString*) getAppVersion;
-+ (void) setDebugMode:(BOOL) debug;
-+ (void) localDebug:(NSString*)debugMessage;
++ (void)logWithPath:(char *)path line:(NSUInteger)line string:(NSString *)format, ...;
+
 @end

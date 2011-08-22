@@ -36,7 +36,7 @@
 @property int width;
 
 
-+(MadvertiseAd*)initFromDictionary:(NSDictionary*) dictionary;
+-(MadvertiseAd*)initFromDictionary:(NSDictionary*) dictionary;
 
 -(NSString*)to_html;
 

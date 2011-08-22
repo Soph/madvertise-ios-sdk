@@ -21,18 +21,13 @@
 @end
 
 @implementation MadvertiseTextAdView
-@synthesize text;
 
-+(MadvertiseTextAdView*)withText:(NSString*) text {
-  MadvertiseTextAdView* view;
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    view = [[MadvertiseTextAdView alloc] initWithText:text];
-  [pool release];
-  return [view autorelease];
++ (MadvertiseTextAdView*)withText:(NSString*) text {
+  return [[[MadvertiseTextAdView alloc] initWithText:text] autorelease];
 }
 
 
-- (id)initWithText:(NSString*) _text {
+- (id)initWithText:(NSString*)_text {
   if((self = [self initWithFrame: CGRectMake(0, 0, 320, 53)])) {
     // text 
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 53)];
@@ -83,11 +78,5 @@
   CGGradientRelease(glossGradient);
   CGColorSpaceRelease(rgbColorspace); 
 }
-
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 
 @end

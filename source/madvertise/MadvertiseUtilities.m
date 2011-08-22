@@ -19,18 +19,6 @@
 @implementation MadvertiseUtilities
 
 
-static BOOL madvertiseDebugMode = YES;
-
-+ (void) setDebugMode: (BOOL) debug {
-	madvertiseDebugMode = debug;
-}
-
-+ (void)localDebug:(NSString*)debugMessage {
-    if (madvertiseDebugMode) {
-        NSLog(@"[Madvertise Debug]  %@", debugMessage);
-    }
-}
-
 + (NSString *) getIP {
 	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 	NSString *result = nil;
@@ -137,5 +125,17 @@ static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
++ (void)logWithPath:(char *)path line:(NSUInteger)line string:(NSString *)format, ... {
+	NSString *pathString = [[NSString alloc] initWithBytes:path	length:strlen(path) encoding:NSUTF8StringEncoding];
+	
+	va_list argList;
+	va_start(argList, format);
+	NSString *formattedString = [[NSString alloc] initWithFormat:format arguments:argList];
+	va_end(argList);
+	
+	NSLog(@"%@", [NSString stringWithFormat:@"%@ (%d): %@", [pathString lastPathComponent], line, formattedString]);
+	[formattedString release];
+	[pathString release];
+}
 
 @end

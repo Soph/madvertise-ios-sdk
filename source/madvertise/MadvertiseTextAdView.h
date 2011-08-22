@@ -15,9 +15,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MadvertiseTextAdView : UIView {
-  NSString* text;
 }
 
-@property(nonatomic,retain) NSString *text;
 + (MadvertiseTextAdView*)withText:(NSString*)text;
+
 @end

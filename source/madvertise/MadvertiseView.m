@@ -56,6 +56,14 @@
 
 @synthesize placeHolder1 = placeholder_1;
 @synthesize placeHolder2 = placeholder_2;
+@synthesize currentAd;
+@synthesize inAppLandingPageController;
+@synthesize request;
+@synthesize currentView;
+@synthesize timer;
+@synthesize conn;
+@synthesize receivedData;
+@synthesize madDelegate;
 
 NSString * const MadvertiseAdClass_toString[] = {
   @"mma",
@@ -68,37 +76,31 @@ NSString * const MadvertiseAdClass_toString[] = {
 
 // METHODS
 - (void) dealloc {
-  [MadvertiseUtilities localDebug:@"Call dealloc in MadvertiseView"];
+  MADLog(@"Call dealloc in MadvertiseView");
   
-  if (conn != nil && [conn isKindOfClass:[NSURLConnection class]]){
-    [conn cancel];
-  }
+  [self.conn cancel];
+  self.conn = nil;
+  self.request = nil;
+  self.receivedData = nil;
   
-  [conn release];
-
-  [post_params release];
-  [self destroyView:currentView];
+  [self stopTimer];
+  self.timer = nil;
   
-  if (timer != nil ){
-    [timer invalidate];
-    timer = nil;
-  }
+  self.inAppLandingPageController = nil;
+  self.madDelegate = nil;
   
+  self.placeHolder1.delegate = nil;
+  [self.placeHolder1 stopLoading];
+  self.placeHolder1 = nil;
+  self.placeHolder2.delegate = nil;
+  [self.placeHolder2 stopLoading];
+  self.placeHolder2 = nil;
   
-  if(inAppLandingPageController != nil){
-    [inAppLandingPageController release];
-    inAppLandingPageController = nil;
-  }
+  self.currentView = nil;
+  self.currentAd   = nil;
   
-  if(placeholder_1 !=nil && placeholder_2!=nil){
-    [placeholder_1 release];
-    [placeholder_2 release];
-  }
-  
-  [currentAd release];
-  
-  currentView = nil;
-  currentAd   = nil;
+  [lock release];
+  lock = nil;
      
   [[NSNotificationCenter defaultCenter] removeObserver: self name:UIApplicationDidEnterBackgroundNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver: self name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -112,14 +114,17 @@ NSString * const MadvertiseAdClass_toString[] = {
 //////////////////////
 
 + (MadvertiseView*)loadAdWithDelegate:(id<MadvertiseDelegationProtocol>)delegate withClass:(MadvertiseAdClass)adClassValue secondsToRefresh:(int)secondsToRefresh {
+
+  BOOL enableDebug = NO;
   
-  BOOL enableDebug = true;
+#ifdef DEBUG
+  enableDebug = YES;
+#endif
   
   // debugging
   if([delegate respondsToSelector:@selector(debugEnabled)]){
     enableDebug = [delegate debugEnabled];
   }
-  [MadvertiseUtilities setDebugMode:enableDebug];
   
   // Download-Tracker
   if([delegate respondsToSelector:@selector(downloadTrackerEnabled)]){
@@ -141,9 +146,11 @@ NSString * const MadvertiseAdClass_toString[] = {
 }
 
 - (void)removeFromSuperview {
-  [timer invalidate];
+  [self stopTimer];
+
   [placeholder_1 removeFromSuperview];
   [placeholder_2 removeFromSuperview];
+  [super removeFromSuperview];
 }
 
 - (void)place_at_x:(int)x_pos y:(int)y_pos {
@@ -169,47 +176,47 @@ NSString * const MadvertiseAdClass_toString[] = {
 // helper method for initialization
 - (MadvertiseView*)initWithDelegate:(id<MadvertiseDelegationProtocol>)delegate withClass:(MadvertiseAdClass)adClassValue secondsToRefresh:(int)secondsToRefresh {
   
-  [super init];
-  
-  self.clipsToBounds = YES; 
-   
-  currentAdClass     = adClassValue;
-   
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"*** madvertise SDK %@ ***", MADVERTISE_SDK_VERION]];
-  
-  interval            = secondsToRefresh;
-  request             = nil;
-  receivedData        = nil;
-  responseCode        = 200;
-  isBannerMode        = true;
-  timer               = nil;
-  
-  // [self createAdReloadTimer];
+  if ((self = [super init])) {
+    self.clipsToBounds = YES; 
     
-  madDelegate  = delegate;
-
-  // load first ad
-  lock = [[NSLock alloc] init];
-  [self loadAd];
-  
-  self.placeHolder1 = [[[UIWebView alloc] initWithFrame:CGRectZero] autorelease];
-  [placeholder_1 setUserInteractionEnabled:false];  
-  placeholder_1.delegate = self;
-  
-  self.placeHolder2 = [[[UIWebView alloc] initWithFrame:CGRectZero] autorelease];
-  [placeholder_2 setUserInteractionEnabled:false];  
-  placeholder_2.delegate = self;
-  
-  visibleHolder     = 0;
-  animationDuration = 0.75;
-  
-  if([madDelegate respondsToSelector:@selector(durationOfBannerAnimation)]){
-    animationDuration = [madDelegate durationOfBannerAnimation];
+    currentAdClass     = adClassValue;
+    
+    MADLog(@"*** madvertise SDK %@ ***", MADVERTISE_SDK_VERION);
+    
+    interval            = secondsToRefresh;
+    request             = nil;
+    receivedData        = nil;
+    responseCode        = 200;
+    isBannerMode        = YES;
+    timer               = nil;
+    
+    // [self createAdReloadTimer];
+    
+    madDelegate  = delegate;
+    
+    // load first ad
+    lock = [[NSLock alloc] init];
+    [self loadAd];
+    
+    placeholder_1 = [[UIWebView alloc] initWithFrame:CGRectZero];
+    [placeholder_1 setUserInteractionEnabled:NO];  
+    placeholder_1.delegate = self;
+    
+    placeholder_2 = [[UIWebView alloc] initWithFrame:CGRectZero];
+    [placeholder_2 setUserInteractionEnabled:NO];  
+    placeholder_2.delegate = self;
+    
+    visibleHolder     = 0;
+    animationDuration = 0.75;
+    
+    if([madDelegate respondsToSelector:@selector(durationOfBannerAnimation)]){
+      animationDuration = [madDelegate durationOfBannerAnimation];
+    }
+    
+    //Notification
+    [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(stopTimer) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(createAdReloadTimer) name:UIApplicationDidBecomeActiveNotification object:nil];
   }
-  
-  //Notification
-  [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(stopTimer) name:UIApplicationDidEnterBackgroundNotification object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(createAdReloadTimer) name:UIApplicationDidBecomeActiveNotification object:nil];
   
   return self;
 }
@@ -219,27 +226,25 @@ NSString * const MadvertiseAdClass_toString[] = {
 
 // check, if response is OK
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"%@ %i", @"Received response code: ", [response statusCode]]];
+  MADLog(@"%@ %i", @"Received response code: ", [response statusCode]);
   responseCode = [response statusCode];
   [receivedData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-  [MadvertiseUtilities localDebug:@"Received data from Ad Server"];
+  MADLog(@"Received data from Ad Server");
   [receivedData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-  [MadvertiseUtilities localDebug:@"Failed to receive ad"];
-  [MadvertiseUtilities localDebug:[error description]];
+  MADLog(@"Failed to receive ad");
+  MADLog(@"%@",[error description]);
   
   // dispatch status notification
   //-----------------------------
   [[NSNotificationCenter defaultCenter] postNotificationName:@"MadvertiseAdLoadFailed" object:[NSNumber numberWithInt:responseCode]];
 
-  [connection release];
-  connection = nil;
-  request    = nil;
+  self.request = nil;
 }
 
 
@@ -251,22 +256,18 @@ NSString * const MadvertiseAdClass_toString[] = {
   
   if( responseCode == 200) {
     // parse response
-    [MadvertiseUtilities localDebug:@"Deserializing JSON"];
+    MADLog(@"Deserializing JSON");
     NSString* jsonString = [[NSString alloc] initWithData:receivedData encoding: NSUTF8StringEncoding];
-    [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"%@%@", @"Received string: ", jsonString]];
+    MADLog(@"Received string: %@", jsonString);
     
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF32BigEndianStringEncoding];
     [jsonString release];
     
     NSDictionary *dictionary = [[CJSONDeserializer deserializer] deserializeAsDictionary:jsonData error:nil];
     
-    [MadvertiseUtilities localDebug:@"Creating ad"];
+    MADLog(@"Creating ad");
     
-    // create ad (and release old Ad)
-    if(currentAd)
-      [currentAd release];
-    
-    currentAd = [MadvertiseAd initFromDictionary:dictionary];
+    self.currentAd = [[[MadvertiseAd alloc] initFromDictionary:dictionary] autorelease];
     
     // banner formats
     if(currentAdClass == medium_rectangle) {
@@ -295,9 +296,8 @@ NSString * const MadvertiseAdClass_toString[] = {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"MadvertiseAdLoadFailed" object:[NSNumber numberWithInt:responseCode]];
   }
   
-  request       = nil;
-  [receivedData release];
-  receivedData  = nil;
+  self.request = nil;
+  self.receivedData = nil;
 }
 
 
@@ -306,59 +306,56 @@ NSString * const MadvertiseAdClass_toString[] = {
   
   [lock lock];
   
-  ////////////////  POST PARAMS ////////////////
-  post_params = [[NSMutableDictionary alloc] init];
-  
-  if(request){
-    [MadvertiseUtilities localDebug:@"loadAd - returning because another request is running"];
+  if(self.request){
+    MADLog(@"loadAd - returning because another request is running");
     [lock unlock];
     return;
   }
-  
-  receivedData = [[NSMutableData data] retain];
   
   NSString *server_url = @"http://ad.madvertise.de";
   if(madDelegate != nil && [madDelegate respondsToSelector:@selector(adServer)]) {
     server_url = [madDelegate adServer];
   }
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"%@%@", @"Using url: ",server_url]];
-  
-  
-  // always supported request parameter //
+  MADLog(@"Using url: %@",server_url);
     
+  // always supported request parameter //
   if (madDelegate == nil || ![madDelegate respondsToSelector:@selector(appId)]) {
-    [MadvertiseUtilities localDebug:@"delegate does not respond to appId ! return ..."];
+    MADLog(@"delegate does not respond to appId ! return ...");
     return;
   }
   
+  ////////////////  POST PARAMS ////////////////
+  NSMutableDictionary* post_params = [[NSMutableDictionary alloc] init];
+  self.receivedData = [NSMutableData data];
+  
   NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/site/%@", server_url, [madDelegate appId]]];
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"%@%@", @"AppId : ",[madDelegate appId]]];
+  MADLog(@"AppId : %@",[madDelegate appId]);
   
   //get application name
   NSString *appName = [MadvertiseUtilities getAppName];
   [post_params setValue:appName forKey:@"app_name"];
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"application name: %@",appName]];
+  MADLog(@"application name: %@",appName);
 
   NSString *appVersion = [MadvertiseUtilities getAppVersion];
   [post_params setValue:appName forKey:@"app_version"];
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"application version: %@",appVersion]];
+  MADLog(@"application version: %@",appVersion);
   
   //get parent size
   CGSize parent_size =  [self getParentViewDimensions];
   [post_params setValue:[NSNumber numberWithFloat:parent_size.width] forKey:@"parent_width"];
   [post_params setValue:[NSNumber numberWithFloat:parent_size.height] forKey:@"parent_height"];
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"parent size: %.f x %.f",parent_size.width,parent_size.height,nil]];
+  MADLog(@"parent size: %.f x %.f",parent_size.width,parent_size.height);
   
   //get screen size
   CGSize screen_size = [self getScreenResolution];
   [post_params setValue:[NSNumber numberWithFloat:screen_size.width] forKey:@"device_width"];
   [post_params setValue:[NSNumber numberWithFloat:screen_size.height] forKey:@"device_height"];
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"screen size: %.f x %.f",screen_size.width,screen_size.height,nil]];
+  MADLog(@"screen size: %.f x %.f",screen_size.width,screen_size.height);
   
   //get screen orientation
   NSString* screen_orientation = [self getDeviceOrientation];
   [post_params setValue:screen_orientation forKey:@"orientation"];
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"screen orientation: %@",screen_orientation]];
+  MADLog(@"screen orientation: %@",screen_orientation);
   
   
   // optional url request parameter
@@ -371,17 +368,17 @@ NSString * const MadvertiseAdClass_toString[] = {
   if ([madDelegate respondsToSelector:@selector(gender)]) {
     NSString *gender = [madDelegate gender];
     [post_params setValue:gender forKey:@"gender"];
-    [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"gender: %@",gender]];
+    MADLog(@"gender: %@",gender);
   }
 
   if ([madDelegate respondsToSelector:@selector(age)]) {
     NSString *age = [madDelegate age];
     [post_params setValue:age  forKey:@"age"];
-    [MadvertiseUtilities localDebug: age];
+    MADLog(@"%@",age);
   }
   
-  [MadvertiseUtilities localDebug:@"Init new request"];
-  request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0]; 
+  MADLog(@"Init new request");
+  self.request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0]; 
   
   NSMutableDictionary* headers = [[NSMutableDictionary alloc] init];  
   [headers setValue:@"application/x-www-form-urlencoded; charset=utf-8" forKey:@"Content-Type"];  
@@ -391,11 +388,11 @@ NSString * const MadvertiseAdClass_toString[] = {
   UIDevice* device = [UIDevice currentDevice];
   
   NSString *ua = [MadvertiseUtilities buildUserAgent:device];
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"%@%@", @"ua: ", ua]];
+  MADLog(@"ua: %@", ua);
   
   // get IP
   NSString *ip = [MadvertiseUtilities getIP];
-  [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"%@%@", @"IP: ", ip]];
+  MADLog(@"IP: %@", ip);
 
   NSString *hash = [MadvertiseUtilities base64Hash:[device uniqueIdentifier]];
   
@@ -421,24 +418,26 @@ NSString * const MadvertiseAdClass_toString[] = {
   [request setHTTPMethod:@"POST"];  
   [request setAllHTTPHeaderFields:headers];  
   [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-  [MadvertiseUtilities localDebug:@"Sending request"];
+  MADLog(@"Sending request");
   
-  conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-  [MadvertiseUtilities localDebug:@"Request send"];
+  self.conn = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+  MADLog(@"Request send");
   
   [headers release];
+  [post_params release];
   [lock unlock];
 }
 
 - (void)openInSafariButtonPressed:(id)sender {
-  [MadvertiseUtilities localDebug:@"openInSafariButtonPressed called"];  
+  MADLog(@"openInSafariButtonPressed called");
   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:currentAd.clickUrl]];
 }
 
 - (void)openInAppBrowser {
 
   [self stopTimer];
-  inAppLandingPageController = [[InAppLandingPageController alloc] init];  
+  self.inAppLandingPageController = [[[InAppLandingPageController alloc] init] autorelease];
+  //self.inAppLandingPageController.view.hidden = NO; // triggers viewDidLoad
   inAppLandingPageController.onClose =  @selector(inAppBrowserClosed);
   inAppLandingPageController.ad = currentAd;
   inAppLandingPageController.banner_view = currentView;
@@ -455,18 +454,18 @@ NSString * const MadvertiseAdClass_toString[] = {
   [UIView commitAnimations];
 }
 
-- (void) stopTimer {
-  if (timer && [timer isValid]) {
-    [timer invalidate];
-    timer = nil;
+- (void)stopTimer {
+  if (self.timer && [timer isValid]) {
+    [self.timer invalidate];
+    self.timer = nil;
   }
 }
 
 - (void)createAdReloadTimer {
   // prepare automatic refresh
-  [MadvertiseUtilities localDebug:@"Init Ad reload timer"];
-  // [self stopTimer];
-  timer = [NSTimer scheduledTimerWithTimeInterval: interval target: self selector: @selector(timerFired:) userInfo: nil repeats: YES];
+  MADLog(@"Init Ad reload timer");
+  [self stopTimer];
+  self.timer = [NSTimer scheduledTimerWithTimeInterval: interval target: self selector: @selector(timerFired:) userInfo: nil repeats: YES];
 }
 
 - (void)inAppBrowserClosed {
@@ -476,7 +475,7 @@ NSString * const MadvertiseAdClass_toString[] = {
 
 // ad has been touched, open click_url from he current app according to click_action
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  [MadvertiseUtilities localDebug:@"touchesBegan"];
+  MADLog(@"touchesBegan");
   if (currentAd.shouldOpenInAppBrowser)
     [self openInAppBrowser];
   else
@@ -484,9 +483,9 @@ NSString * const MadvertiseAdClass_toString[] = {
 }  
 
 // Refreshing the ad
-- (void) timerFired: (NSTimer *) theTimer {
+- (void)timerFired: (NSTimer *) theTimer {
   if (madDelegate != nil && [madDelegate respondsToSelector:@selector(appId)]) {
-    [MadvertiseUtilities localDebug:@"Ad reloading"];
+    MADLog(@"Ad reloading");
     [self loadAd];
   }
 }
@@ -499,13 +498,11 @@ NSString * const MadvertiseAdClass_toString[] = {
       [((UIWebView*)inView) stopLoading];
     }
     [inView removeFromSuperview];
-    [inView release];
   }
-  
 }
 
 
-- (void) webViewDidFinishLoad:(UIWebView *)aWebView {
+- (void)webViewDidFinishLoad:(UIWebView *)aWebView {
   
   MadvertiseAnimationClass animationTyp;
   if ([madDelegate respondsToSelector:@selector(bannerAnimationTyp)]) {
@@ -537,12 +534,12 @@ NSString * const MadvertiseAdClass_toString[] = {
 }
 
 - (void) displayView {
-  [MadvertiseUtilities localDebug:@"Display view"];
-  [self setUserInteractionEnabled:true];
+  MADLog(@"Display view");
+  [self setUserInteractionEnabled:YES];
   
   if (currentAd == nil) {
-    [MadvertiseUtilities localDebug:@"No ad to show"];
-    [self setUserInteractionEnabled:false];
+    MADLog(@"No ad to show");
+    [self setUserInteractionEnabled:NO];
     return;
   }
   
@@ -558,16 +555,16 @@ NSString * const MadvertiseAdClass_toString[] = {
       [placeholder_2 setFrame:CGRectMake(0, 0, currentAd.width, currentAd.height)];
       [placeholder_2 loadHTMLString:[currentAd to_html] baseURL:nil];
     }
-    [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"htmlContent:",[currentAd to_html]]];
+    MADLog(@"htmlContent: %@",[currentAd to_html]);
     
   }else{
     
     // text ad
     //--------
-    [MadvertiseUtilities localDebug:@"Showing text ad"];
+    MADLog(@"Showing text ad");
     MadvertiseTextAdView* view = [MadvertiseTextAdView withText:currentAd.text];
     if(!currentView){
-      currentView = view;
+      self.currentView = view;
     }
     [view setFrame:self.frame];
   }
@@ -766,10 +763,6 @@ NSString * const MadvertiseAdClass_toString[] = {
       visibleHolder = 1;
     }	
   }
-}
-
-- (void)viewSwapFinished:(NSString*)animationID finished:(NSNumber*)finished context:(void*)context {
-  [self destroyView:oldView];
 }
 
 - (void) resetAnimation{

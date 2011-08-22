@@ -16,6 +16,7 @@
 #import "MadvertiseView.h"
 #import "MadvertiseSDKSampleDelegate.h"
 #import "MadvertiseTracker.h"
+#import "MadvertiseUtilities.h"
 
 @implementation MadvertiseSDKSampleViewController
 
@@ -64,11 +65,11 @@
 #pragma mark Notifications
 
 - (void) onAdLoadedSuccessfully:(NSNotification*)notify{
-  [MadvertiseUtilities localDebug: [NSString stringWithFormat:@"successfully loaded with code: %@",[notify object]]];
+  MADLog(@"successfully loaded with code: %@",[notify object]);
 }
 
 - (void) onAdLoadedFailed:(NSNotification*)notify{
-  [MadvertiseUtilities localDebug: [NSString stringWithFormat:@"ad load faild with code: %@",[notify object]]];
+  MADLog(@"ad load faild with code: %@",[notify object]);
 }
 
 - (void) viewWillAppear:(BOOL)animated{

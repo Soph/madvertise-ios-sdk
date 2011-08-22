@@ -27,28 +27,21 @@
 @synthesize height;
 @synthesize shouldOpenInAppBrowser;
 
-+(MadvertiseAd*)initFromDictionary:(NSDictionary*)dictionary {
+-(MadvertiseAd*)initFromDictionary:(NSDictionary*)dictionary {
   
-  MadvertiseAd *ad = [MadvertiseAd alloc];
-  
-  for (id key in dictionary) {
-    [MadvertiseUtilities localDebug:[NSString stringWithFormat:@"%@=%@", key, [dictionary valueForKey:key]]];
+  if ((self = [super init])) {
+    MADLog(@"%@", dictionary);
+    
+    clickUrl     = [[dictionary objectForKey:@"click_url"] retain];
+    bannerUrl    = [[dictionary objectForKey:@"banner_url"] retain];  
+    text         = [([dictionary objectForKey:@"text"] ?: @"") retain];
+    hasBanner    = [[dictionary objectForKey:@"has_banner"] boolValue];
+    shouldOpenInAppBrowser = [[dictionary objectForKey:@"should_open_in_app"] boolValue];
+    
+    width  = 320;
+    height = 53;
   }
-  
-  ad.clickUrl     = [dictionary objectForKey:@"click_url"];
-  ad.bannerUrl    = [dictionary objectForKey:@"banner_url"];  
-  NSString *hasBanner = [dictionary objectForKey:@"has_banner"];
-  ad.hasBanner    = hasBanner != nil ? [hasBanner boolValue] : NO;
-  ad.text         = [dictionary objectForKey:@"text"];
-  if(!ad.text)
-    ad.text = @"";
-  NSString *openInApp = [dictionary objectForKey:@"should_open_in_app"];
-  ad.shouldOpenInAppBrowser = openInApp != nil ? [openInApp boolValue] : NO;
-  
-  ad.width  = 320;
-  ad.height = 53;
-  
-  return ad;
+  return self;
 }
 
 
@@ -70,5 +63,13 @@
   }
   
   return [NSString stringWithFormat:template, body];
+}
+
+- (void)dealloc {
+  self.clickUrl = nil;
+  self.bannerUrl = nil;
+  self.text = nil;
+
+  [super dealloc];
 }
 @end
