@@ -27,7 +27,7 @@
 #import "MadvertiseView.h"
 #import "CJSONDeserializer.h"
 
-#define MADVERTISE_SDK_VERION @"4.1.2"
+#define MADVERTISE_SDK_VERION @"4.1.3"
 
 
 
@@ -199,6 +199,7 @@ NSString * const MadvertiseAdClass_toString[] = {
     // load first ad
     lock = [[NSLock alloc] init];
     [self loadAd];
+    [self createAdReloadTimer];
     
     placeholder_1 = [[UIWebView alloc] initWithFrame:CGRectZero];
     [placeholder_1 setUserInteractionEnabled:NO];  
