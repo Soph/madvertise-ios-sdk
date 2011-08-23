@@ -28,6 +28,7 @@ typedef enum tagMadvertiseAdClass {
   
   // attributes
   InAppLandingPageController* inAppLandingPageController;
+  UIViewController *rootViewController;
   id<MadvertiseDelegationProtocol> madDelegate;           // the delegate which receives ad related events like: adLoaded or adLoadFailed
   NSMutableData* receivedData;                            // data received thorugh the connection to the ad server
   NSMutableURLRequest* request;  
@@ -59,6 +60,7 @@ typedef enum tagMadvertiseAdClass {
 ////////////////
 
 @property (nonatomic, assign) id<MadvertiseDelegationProtocol> madDelegate;
+@property (nonatomic, assign) UIViewController *rootViewController;
 @property (nonatomic, retain) UIWebView *placeHolder1;
 @property (nonatomic, retain) UIWebView *placeHolder2;
 @property (nonatomic, retain) MadvertiseAd *currentAd;
@@ -68,6 +70,7 @@ typedef enum tagMadvertiseAdClass {
 @property (nonatomic, retain) NSTimer* timer;
 @property (nonatomic, retain) NSURLConnection *conn;
 @property (nonatomic, retain) NSMutableData* receivedData;
+
 
 + (MadvertiseView*)loadAdWithDelegate:(id<MadvertiseDelegationProtocol>)delegate withClass:(MadvertiseAdClass)adClassValue secondsToRefresh:(int)seconds;
 + (void) adLoadedHandlerWithObserver:(id) addObserver AndSelector:(SEL) sel;

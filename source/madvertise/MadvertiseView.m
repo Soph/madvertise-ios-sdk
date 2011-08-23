@@ -64,6 +64,7 @@
 @synthesize conn;
 @synthesize receivedData;
 @synthesize madDelegate;
+@synthesize rootViewController;
 
 NSString * const MadvertiseAdClass_toString[] = {
   @"mma",
@@ -82,6 +83,7 @@ NSString * const MadvertiseAdClass_toString[] = {
   self.conn = nil;
   self.request = nil;
   self.receivedData = nil;
+  self.rootViewController = nil;
   
   [self stopTimer];
   self.timer = nil;
@@ -442,16 +444,22 @@ NSString * const MadvertiseAdClass_toString[] = {
   inAppLandingPageController.ad = currentAd;
   inAppLandingPageController.banner_view = currentView;
   inAppLandingPageController.madvertise_view = self;
-  [inAppLandingPageController.view setFrame:[[UIScreen mainScreen] applicationFrame]];
+  
 
-  UIWindow *window = [[UIApplication sharedApplication] keyWindow];  
-  
-  [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationDuration:1.0];
-  [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
-  
-  [window addSubview:inAppLandingPageController.view];
-  [UIView commitAnimations];
+  if (self.rootViewController) {
+    inAppLandingPageController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.rootViewController presentModalViewController:inAppLandingPageController animated:YES];
+  }
+  else {
+    [inAppLandingPageController.view setFrame:[[UIScreen mainScreen] applicationFrame]];
+    UIView *rootView = [[UIApplication sharedApplication] keyWindow];  
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:rootView cache:YES];
+    
+    [rootView addSubview:inAppLandingPageController.view];
+    [UIView commitAnimations];
+  }  
 }
 
 - (void)stopTimer {

@@ -29,14 +29,17 @@
 @synthesize overlay;
 @synthesize webview;
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+  return YES;
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  CGRect rect = [[UIScreen mainScreen] bounds];
-  
   UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 460.0)];
   view1.backgroundColor = [UIColor colorWithWhite:1.000 alpha:1.000];
+  view1.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   view1.clearsContextBeforeDrawing = YES;
   view1.clipsToBounds = NO;
   view1.opaque = YES;
@@ -46,7 +49,7 @@
   [view1 release];
   
   UIWebView *view6 = [[UIWebView alloc] initWithFrame:CGRectMake(-20.0, -66.0, 340.0, 482.0)];
-  view6.frame = CGRectMake(0.0, 0, 340.0, 460.0-44);
+  view6.frame = CGRectMake(0.0, 0, 320.0, 460.0-44);
   view6.alpha = 1.000;
   view6.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   view6.clearsContextBeforeDrawing = YES;
@@ -83,42 +86,47 @@
   [toolbar release];
 
   [self.view addSubview:self.webview];
-  
-  self.overlay = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, rect.size.width, rect.size.height - 64.0)] autorelease];
-  self.overlay.alpha = 0.800;
-  self.overlay.backgroundColor = [UIColor colorWithRed:0.000 green:0.000 blue:0.000 alpha:1.000];
+
   self.banner_container = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 210.0 - 44, 320.0, 52.0)] autorelease];
+  [self.banner_container addSubview:self.banner_view];  
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   
-  UIColor* white = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:0.200];  
+  CGRect rect = self.view.frame;
   
-  CAGradientLayer *gradient = [CAGradientLayer layer];
-  gradient.frame = self.overlay.bounds;
-  gradient.colors = [NSArray arrayWithObjects:(id)[white CGColor], (id)[[UIColor blackColor] CGColor], (id)[white CGColor], nil];
-  
-  [self.overlay.layer insertSublayer:gradient atIndex:0];
-  
-  [self.banner_container addSubview:self.banner_view];
+  self.overlay = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height - 44.0)] autorelease];
+  self.overlay.alpha = 0.800;
+  self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+  self.overlay.backgroundColor = [UIColor colorWithRed:0.000 green:0.000 blue:0.000 alpha:1.000];
   [self.view addSubview:self.overlay];
   
   self.spinner = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
-
   [spinner setCenter:CGPointMake(rect.size.width/2.0, (rect.size.height-20.0)/2.0 + 25.0)]; 
+  self.spinner.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
   [self.view addSubview:spinner]; // spinner is not visible until started
   [spinner startAnimating];
-
+  
   self.webview.delegate = self;
-  [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.ad clickUrl]]]];
+  [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.ad clickUrl]]]];  
 }
 
 bool gone = NO; 
 
--(void) back {
-  [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationDuration:1.0];
-  UIWindow *window = [[UIApplication sharedApplication] keyWindow];  
-  [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:window cache:YES];
-  [self.view removeFromSuperview];
-  [UIView commitAnimations];
+- (void)back {
+  if (self.parentViewController) {
+    // this can only happen, when we were displayed as a modal view
+    [self dismissModalViewControllerAnimated:YES];
+  }
+  else {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.0];
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];  
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:window cache:YES];
+    [self.view removeFromSuperview];
+    [UIView commitAnimations];
+  }
   [self.madvertise_view addSubview:self.banner_view];
   [self.madvertise_view performSelector:onClose];
   gone = NO;
