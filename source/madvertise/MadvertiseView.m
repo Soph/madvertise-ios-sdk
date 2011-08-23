@@ -339,7 +339,7 @@ NSString * const MadvertiseAdClass_toString[] = {
   MADLog(@"application name: %@",appName);
 
   NSString *appVersion = [MadvertiseUtilities getAppVersion];
-  [post_params setValue:appName forKey:@"app_version"];
+  [post_params setValue:appVersion forKey:@"app_version"];
   MADLog(@"application version: %@",appVersion);
   
   //get parent size
