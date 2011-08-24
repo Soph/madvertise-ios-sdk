@@ -439,12 +439,15 @@ NSString * const MadvertiseAdClass_toString[] = {
 
   [self stopTimer];
   self.inAppLandingPageController = [[[InAppLandingPageController alloc] init] autorelease];
-  //self.inAppLandingPageController.view.hidden = NO; // triggers viewDidLoad
   inAppLandingPageController.onClose =  @selector(inAppBrowserClosed);
   inAppLandingPageController.ad = currentAd;
   inAppLandingPageController.banner_view = currentView;
   inAppLandingPageController.madvertise_view = self;
-  
+
+  // there isn't a rootViewController defined, try to find one
+  if (!(self.rootViewController) && ([UIWindow instancesRespondToSelector:@selector(rootViewController)])) {
+    self.rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+  }
 
   if (self.rootViewController) {
     inAppLandingPageController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -452,12 +455,12 @@ NSString * const MadvertiseAdClass_toString[] = {
   }
   else {
     [inAppLandingPageController.view setFrame:[[UIScreen mainScreen] applicationFrame]];
-    UIView *rootView = [[UIApplication sharedApplication] keyWindow];  
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:1.0];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:rootView cache:YES];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:window cache:YES];
     
-    [rootView addSubview:inAppLandingPageController.view];
+    [window addSubview:inAppLandingPageController.view];
     [UIView commitAnimations];
   }  
 }
