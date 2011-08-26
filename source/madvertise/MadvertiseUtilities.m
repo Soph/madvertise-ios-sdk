@@ -20,7 +20,6 @@
 
 
 + (NSString *) getIP {
-	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 	NSString *result = nil;
 	
 	struct ifaddrs*	addrs;
@@ -36,7 +35,7 @@
 			{
 				const struct sockaddr_in* dlAddr = (const struct sockaddr_in*) cursor->ifa_addr;
 				const uint8_t* base = (const uint8_t*)&dlAddr->sin_addr;
-				ip = [[NSMutableString new] autorelease];
+				ip = [NSMutableString new];
 				for (int i = 0; i < 4; i++)
 				{
 					if (i != 0)
@@ -45,22 +44,21 @@
 				}
 				interface = [NSString stringWithFormat:@"%s", cursor->ifa_name];
 				if([interface isEqualToString:@"en0"] && result == nil) {
-					result = ip;
+					result = [ip copy];
 				}
 				if(![interface isEqualToString:@"lo0"] && ![interface isEqualToString:@"en0"] && ![interface isEqualToString:@"fw0"] && ![interface isEqualToString:@"en1"] ) {
 					// NSLog(@"Interface %@", interface);
-					result = ip;
+					result = [ip copy];
 				}
+        [ip release];
 			}
 			cursor = cursor->ifa_next;
 		}
 		freeifaddrs(addrs);
 	}
-	[result retain];
-	[pool release];
 	if(result == nil)
 		result = @"127.0.0.1";
-	return result;
+	return [result autorelease];
 }
 
 static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
