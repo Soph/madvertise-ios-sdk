@@ -15,7 +15,11 @@
 #import <CoreLocation/CoreLocation.h>
 
 typedef enum tagMadvertiseAnimationClass {
-  leftToRight, topToBottom, curlDown, fade, none 
+  MadvertiseAnimationClassLeftToRight,
+  MadvertiseAnimationClassTopToBottom,
+  MadvertiseAnimationClassCurlDown,
+  MadvertiseAnimationClassFade,
+  MadvertiseAnimationClassNone 
 } MadvertiseAnimationClass;
 
 @class MadvertiseView;

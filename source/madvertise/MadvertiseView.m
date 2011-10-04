@@ -537,18 +537,18 @@ NSString * const MadvertiseAdClass_toString[] = {
   placeholder_2.alpha = 1.0;  
 
   switch (animationTyp) {
-    case leftToRight:
+    case MadvertiseAnimationClassLeftToRight:
       [self swapViewFormLeftToRight];
       break;
-    case topToBottom:
+    case MadvertiseAnimationClassTopToBottom:
       [self swapViewFormTopToBottom];
       break;
-    case curlDown:
+    case MadvertiseAnimationClassCurlDown:
       [self swapViewWithCurlDownAnimation:aWebView];
-    case none:
+    case MadvertiseAnimationClassNone:
       [self swapViewWithoutAnimation:aWebView];
       break;
-    case fade:
+    case MadvertiseAnimationClassFade:
       [self swapViewWithFading];
       break;
     default:
